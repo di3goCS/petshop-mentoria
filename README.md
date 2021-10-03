@@ -3,7 +3,7 @@ Seja bem-vindo! Este desafio foi projetado para avaliar a sua capacidade técnic
 Instruções
 - Crie o projeto e coloque esse texto como README
 - Criar uma API REST
-- Após finalizar, envie o código em meu e-mail: rafaelnerisdj@gmail.com
+- Após finalizar, envie o código em meu e-mail.
 Você deverá desenvolver um projeto utilizando PHP, com a finalidade de que seja possível listar, visualizar, criar, editar e excluir animais de estimação de uma petshop.
 
 Observações:
