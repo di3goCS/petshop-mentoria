@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePetsTable extends Migration
+class CreateOwnersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreatePetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pets', function (Blueprint $table) {
+        Schema::create('owners', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('age');
-            $table->enum('type', ['cat', 'dog']);
-            $table->string('race');
-
-            $table->foreignId('owner_id')->constrained()->onDelete('cascade');
+            $table->string('contact');
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ class CreatePetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pets');
+        Schema::dropIfExists('owners');
     }
 }

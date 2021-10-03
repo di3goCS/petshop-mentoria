@@ -30,6 +30,7 @@ class PetService {
             'type' => ['required', Rule::in(['cat', 'dog'])],
             //'type' => ['required', Rule::in('gato', 'cachorro')],
             'race' => 'required|max:100',
+            'owner_id' => 'required|exists:App\Models\Owner,id'
         ]);
 
         if ($validator->fails()){
@@ -66,6 +67,7 @@ class PetService {
             'type' => [Rule::in(['cat', 'dog'])],
             //'type' => ['required', Rule::in('gato', 'cachorro')],
             'race' => 'max:100',
+            'owner' => 'max:100',
         ]);
 
         if ($validator->fails()){

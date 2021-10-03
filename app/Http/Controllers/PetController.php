@@ -17,6 +17,9 @@ class PetController extends Controller
     public function index()
     {
         $pets = $this->petService->getPets();
+        foreach ($pets as $pet){
+            $pet["owner"] = $pet->owner;
+        }
 
         return response()->json(['pets' => $pets]);
     }
