@@ -58,9 +58,10 @@ class OwnerController extends Controller
      * @param  \App\Models\Owner  $owner
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Owner $owner)
+    public function update(Request $request, $id)
     {
-        $response = $this->ownerService->updateOwner($request->all(), $owner->id);
+        // $response = $this->ownerService->updateOwner($request->all(), $owner->id);
+        $response = $this->ownerService->updateOwner($request->all(), $id);
 
         return response()->json(['response' => $response]);
     }

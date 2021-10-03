@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use Exception;
+
 use App\Models\Owner;
 use App\Interfaces\OwnerRepositoryInterface;
 
@@ -29,14 +31,15 @@ class OwnerRepository implements OwnerRepositoryInterface{
     }
 
     public function updateOwner($id, $data){
-        $owner = $this->owner->find($id)->first();
-        $change = $owner->update($data);
-
-        if ($change){
+        $owner = $this->owner->find($id);
+        if ($owner) {
+            $owner->update($data);
             return $owner;
         }
 
-        return $change;  
+        $result = ['error' => 'Usuário não encontrado'];
+
+        return $result;
     }
 
     public function deleteOwner($id){
