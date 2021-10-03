@@ -20,7 +20,7 @@ class CreatePetsTable extends Migration
             $table->enum('type', ['cat', 'dog']);
             $table->string('race');
 
-            $table->foreignId('owner_id')->constrained()->onDelete('cascade');
+            $table->foreignId('owner_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
