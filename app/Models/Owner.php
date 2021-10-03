@@ -13,7 +13,7 @@ class Owner extends Model
 
     protected $fillable = ['name', 'contact'];
 
-    protected $visible = ['name', 'contact'];
+    protected $visible = ['id', 'name', 'contact'];
 
     public function pet(){
         return $this->hasMany(Pet::class);

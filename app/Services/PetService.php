@@ -29,7 +29,7 @@ class PetService {
             'age' => 'required|integer',
             'type' => ['required', Rule::in(['cat', 'dog'])],
             //'type' => ['required', Rule::in('gato', 'cachorro')],
-            'race' => 'required|max:100',
+            'breed' => 'required|max:100',
             'owner_id' => 'required|exists:App\Models\Owner,id'
         ]);
 
@@ -45,9 +45,8 @@ class PetService {
         });
 
         $error['msg'] = 'Operação não realizada';
-        $error['status'] =  503;
 
-        return $pet ? response()->json(['pet' => $pet]) : response()->json(['error' => $error]);
+        return $pet ? ['pet' => $pet] : ['error' => $error];
         
     }
 
@@ -66,7 +65,7 @@ class PetService {
             'age' => 'integer',
             'type' => [Rule::in(['cat', 'dog'])],
             //'type' => ['required', Rule::in('gato', 'cachorro')],
-            'race' => 'max:100',
+            'breed' => 'max:100',
             'owner' => 'max:100',
         ]);
 
@@ -83,7 +82,7 @@ class PetService {
         $error['msg'] = 'Operação não realizada';
         $error['status'] =  503;
 
-        return $pet ? response()->json(['pet' => $pet]) : response()->json(['error' => $error]);
+        return $pet ? ['pet' => $pet] : ['error' => $error];
     }
 
     public function deletePet($id) {
@@ -95,6 +94,6 @@ class PetService {
         $error['msg'] = 'Operação não realizada';
         $error['status'] =  503;
 
-        return $pet ? response()->json(['pet' => $pet]) : response()->json(['error' => $error]);
+        return $pet ? ['pet' => $pet] : ['error' => $error];
     }
 }

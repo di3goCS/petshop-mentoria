@@ -35,10 +35,9 @@ class OwnerService {
 
         DB::transaction( function() use ($data, &$owner){
             $owner = $this->ownerRepository->storeOwner($data);
-            return response()->json(['owner' => $owner]);
         });
 
-        return $owner;
+        return ['owner' => $owner];
         
     }
 
@@ -48,7 +47,7 @@ class OwnerService {
             $owner = $this->ownerRepository->showOwner($id);
         });
 
-        return $owner;
+        return ['owner' => $owner];
     }
 
     public function updateOwner($data, $id){
@@ -67,21 +66,19 @@ class OwnerService {
             $owner = $this->ownerRepository->updateOwner($id, $data);
         });
 
-        $error['msg'] = 'Operação não realizada';
-        $error['status'] =  503;
-
-        return $owner ? response()->json(['owner' => $owner]) : response()->json(['error' => $error]);
+        return ['owner' => $owner];
     }
 
     public function deleteOwner($id) {
         $owner;
-        DB::transaction( function() use ($id, &$owner){
-            $owner = $this->ownerRepository->deleteOwner($id);
+        $result;
+        DB::transaction( function() use ($id, &$owner, &$result){
+            $owner = $this->ownerRepository->showOwner($id);
+            $result = $this->ownerRepository->deleteOwner($id);
         });
 
         $error['msg'] = 'Operação não realizada';
-        $error['status'] =  503;
 
-        return $owner ? response()->json(['owner' => $owner]) : response()->json(['error' => $error]);
+        return $result ? ['owner' => $owner] : ['error' => $error];
     }
 }

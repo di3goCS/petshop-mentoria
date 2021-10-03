@@ -29,7 +29,7 @@ class PetController extends Controller
     {
         $response = $this->petService->storePet($request->all());
 
-        return response()->json(['response' => $response]);
+        return response()->json(['response' => $response], 201);
     }
 
     public function show(Pet $pet)
@@ -45,7 +45,7 @@ class PetController extends Controller
     {
         $response = $this->petService->updatePet($request->all(), $pet);
 
-        return response()->json(['response' => $response]);
+        return response()->json(['response' => $response], 204);
     }
 
     public function destroy(Pet $pet)

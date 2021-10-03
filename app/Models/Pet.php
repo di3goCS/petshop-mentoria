@@ -11,9 +11,9 @@ class Pet extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'age', 'type', 'race', 'owner_id'];
+    protected $fillable = ['name', 'age', 'type', 'breed', 'owner_id'];
 
-    protected $hidden = ['created_at', 'updated_at'];
+    protected $hidden = ['created_at', 'updated_at', 'owner_id'];
     
     public function owner(){
         return $this->belongsTo(Owner::class);
